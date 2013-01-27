@@ -1,0 +1,50 @@
+
+
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>Carnevale Venezia</h1>
+	     <img src="img/carnevale.jpg" width="100%" style="margin: 0px" />
+	     
+	      <div data-role="navbar" data-iconpos="top" data-theme="a">
+				<ul>
+					<li><a data-icon="home" href="index.html">Home</a></li>
+					<li><a data-icon="grid" href="partecipa.html">Partecipa</a></li>
+					<li><a data-icon="star" href="vota.html">Vota</a></li>
+				</ul>
+		</div><!-- /navbar -->
+		
+	     
+	</div><!-- /header -->
+    
+
+	<div data-role="content">	
+		
+		<h4>Inviaci le tue foto / video</h4>
+		    <input type="text" name="nome" id="nome" value="" placeholder="Nome"  />
+		    <input type="text" name="cognome" id="cognome" value="" placeholder="Cognome"  />
+		    <input type="text" name="contatto" id="contatto" value="" placeholder="Contatto"  />
+		    <input type="text" name="commento" id="commento" value="" placeholder="Commento" />
+		    
+		 
+		
+		<br/> 
+		 
+		<div class="center">    
+			<div class="ui-grid-b">
+				<div class="ui-block-a"><img src="img/camera.png" onclick="camera();" /><br/>FOTO</div>
+				<div class="ui-block-b"><img src="img/gallery.png" onclick="getImage();" /><br/>GALLERIA</div>
+				<div class="ui-block-c"><img src="img/Video.png" onclick="video();" /><br/>VIDEO</div>
+			</div><!-- /grid-b -->
+		</div>    
+		
+		<br/><br/>
+		
+		<div id="percentage"></div>
+
+		
+				
+	</div><!-- /content -->
+
+</div><!-- /page -->
+

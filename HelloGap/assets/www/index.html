@@ -12,99 +12,13 @@
    <script src="jqmobile/jquery.js"></script>
    <script src="jqmobile/jquery.mobile-1.2.0.min.js"></script>
    <script type="text/javascript" src="cordova-2.3.0.js"></script>
+   <script type="text/javascript" src="js/index.js"></script>
    
    
-   <script>
-
-   // Wait for PhoneGap to load
-   document.addEventListener("deviceready", onDeviceReady, false);
-
-   // PhoneGap is ready
-   function onDeviceReady() {
-	// Do cool things here...
-   }
-
-   function getImage() {
-       // Retrieve image file location from specified source
-       navigator.camera.getPicture(uploadPhoto, function(message) {
-		alert('get picture failed');
-	},{
-		quality: 50, 
-		destinationType: navigator.camera.DestinationType.FILE_URI,
-	    sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-	}
-       );
-
-   }
-   
-   function camera() {
-       // Retrieve image file location from specified source
-       navigator.camera.getPicture(uploadPhoto, function(message) {
-		alert('get picture failed');
-	},{
-		quality: 50, 
-		destinationType: navigator.camera.DestinationType.FILE_URI,
-	    sourceType: navigator.camera.PictureSourceType.CAMERA
-	}
-       );
-
-   }
-
-   function uploadPhoto(imageURI) {
-       var options = new FileUploadOptions();
-       options.fileKey="file";
-       options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-       options.mimeType="image/jpeg";
-
-       var params = new Object();
-       params.name = $("#name").val();
-       params.commento = $("#commento").val();;
-
-       options.params = params;
-       options.chunkedMode = false;
-
-       var ft = new FileTransfer();
-       
-       //check wifi / 3g 
-       var networkState = navigator.connection.type;
-       switch( networkState ) 
-       {
-        case "wifi":
-        var urlUpload = "http://10.0.0.10/www/phonegap/upload.php";	
-        break;	
-        
-        default:
-        var urlUpload = "http://79.14.84.13/www/phonegap/upload.php"; 	
-       }
-      
-       //percentuale upload
-       ft.onprogress = function(progressEvent) {
-    	       if (progressEvent.lengthComputable) {
-    	         var percentage = Math.round( (progressEvent.loaded / progressEvent.total) * 100) ;
-    	   		 var strpercentage = "uploading... " + percentage + " % "; 
-    	   		 $("#percentage").html(strpercentage);
-    	       } else {
-    	         var percentage = "uploading...";
-    	       }
-    	   };
-       
-       ft.upload(imageURI, urlUpload, win, fail, options);
-   }
-
-   function win(r) {
-       console.log("Code = " + r.responseCode);
-       console.log("Response = " + r.response);
-       console.log("Sent = " + r.bytesSent);
-       //alert("OK " + r.response);
-       alert("File caricato correttamente!");
-       $("#percentage").html("");
-   }
-
-   function fail(error) {
-       alert("An error has occurred: Code = " = error.code);
-   }
-
+	<script type="text/javascript">
+	$.post("http://www.alfapin.com/carnevale/gap/home.php",  {} , function(data) { $("#homeDiv").html(data); } );
    </script>
+   
 </head>
 <body>
 
@@ -116,9 +30,9 @@
 	     
 	     <div data-role="navbar" data-iconpos="top" data-theme="a">
 				<ul>
-					<li><a data-icon="star" href="news.html">News</a></li>
-					<li><a data-icon="grid" href="index.html">Foto</a></li>
-					<li><a data-icon="arrow-d" href="eventi.html">Storia</a></li>
+					<li><a data-icon="home" href="index.html">Home</a></li>
+					<li><a data-icon="grid" href="partecipa.html">Partecipa</a></li>
+					<li><a data-icon="star" href="vota.html">Vota</a></li>
 				</ul>
 		</div><!-- /navbar -->
 		
@@ -128,17 +42,9 @@
 
 	<div data-role="content">	
 		
+		<div id="homeDiv"></div>
 		
-		<img src="img/foto.gif" class="float" id="macchinafoto" />
-		<h3>Inviaci le tue foto</h3>
-		    <label for="name">Scrivi il tuo nome:</label>
-		    <input type="text" name="name" id="name" value=""  />
-		    <label for="name">Scrivi un commento:</label>
-		    <input type="text" name="commento" id="commento" value=""  />
-		<button onclick="getImage();" id="getImage">Scegli da Galleria</button>
-		<button onclick="camera();" id="camera">Scatta foto</button>
-		
-		<div id="percentage"></div>
+		<input type="hidden" id="uuid" name="uuid" >
 				
 	</div><!-- /content -->
 
