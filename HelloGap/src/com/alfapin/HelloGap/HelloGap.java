@@ -21,6 +21,7 @@ package com.alfapin.HelloGap;
 
 import android.app.Activity;
 import android.os.Bundle;
+import com.alfapin.Gap.R;
 import org.apache.cordova.*;
 
 public class HelloGap extends DroidGap

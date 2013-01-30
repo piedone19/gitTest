@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.alfapin.HelloGap;
+package com.alfapin.Gap;
 
 public final class R {
     public static final class attr {

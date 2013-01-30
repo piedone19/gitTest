@@ -23,6 +23,7 @@
    }
 
    function getImage() {
+	   alert("getImage2013!!!");
        // Retrieve image file location from specified source
        navigator.camera.getPicture(uploadPhoto, function(message) {
 		alert('get picture failed');
@@ -37,7 +38,7 @@
    
    function camera() {
        // Retrieve image file location from specified source
-	   alert("camera!!!");
+	   alert("camera2013_1!!!");
        navigator.camera.getPicture(uploadPhoto, function(message) {
 		alert('get picture failed');
 	},{
@@ -46,7 +47,7 @@
 	    sourceType: navigator.camera.PictureSourceType.CAMERA
 	}
        );
-
+       alert("camera2013_2!!!");
    }
 
    function uploadPhoto(imageURI) {
@@ -142,7 +143,9 @@
    
    function video() 
    {
+	   alert("video2013_1!!!");
 	   navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
+	   alert("video2013_2!!!");
    }
    
 	// Called when capture operation is finished
